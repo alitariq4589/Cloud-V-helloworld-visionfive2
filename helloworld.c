@@ -2,6 +2,3 @@
 int main (){ 
 	printf("Hello World in PR!\n");  
 }
-
-
-
