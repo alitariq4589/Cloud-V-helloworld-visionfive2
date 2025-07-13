@@ -11,13 +11,14 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Install GCC
         run: |
           sudo apt update
           sudo apt install -y gcc libatomic1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      
 
       - name: Compile helloworld.c
         run: |
