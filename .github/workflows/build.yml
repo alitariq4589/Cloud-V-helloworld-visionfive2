@@ -1,0 +1,25 @@
+name: Build HelloWorld
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install GCC
+        run: |
+          sudo apt update
+          sudo apt install -y gcc
+
+      - name: Compile helloworld.c
+        run: |
+          gcc helloworld.c -o helloworld
+          ./helloworld
