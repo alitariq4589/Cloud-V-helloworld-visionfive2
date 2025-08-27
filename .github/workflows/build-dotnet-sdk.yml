@@ -31,9 +31,7 @@ jobs:
         apt-get update
         apt-get autoremove -y nodejs
         # Fix Kitware repo GPG key
-        rm -f /etc/apt/trusted.gpg.d/kitware.gpg || true
-        curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | gpg --dearmor -o /usr/share/keyrings/kitware-archive-keyring.gpg
-        echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ jammy main' | tee /etc/apt/sources.list.d/kitware.list
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 16FAAD7AF99A65E2
         apt-get update
         curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
 
