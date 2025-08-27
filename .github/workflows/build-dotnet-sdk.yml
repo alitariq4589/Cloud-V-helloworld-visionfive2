@@ -28,10 +28,12 @@ jobs:
 
     - name: Update Node.js
       run: |
+        #!/bin/bash
+        set -x
         apt-get update
         apt-get autoremove -y nodejs
         # Fix Kitware repo GPG key
-        apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 16FAAD7AF99A65E2
+        curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add -
         apt-get update
         curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
 
