@@ -36,7 +36,7 @@ jobs:
         curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add -
         apt-get update
         curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
-
+      shell: bash
     - name: Build runtime
       run: |
         rm -rf ${PACKAGESDIR} && mkdir -p ${PACKAGESDIR}
