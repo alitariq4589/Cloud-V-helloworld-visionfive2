@@ -30,16 +30,14 @@ jobs:
       run: |
         #!/bin/bash
         set -x
-        apt-get update
-        apt-get autoremove -y nodejs
-        # Fix Kitware repo GPG key
         curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | gpg --dearmor -o /usr/share/keyrings/kitware-archive-keyring.gpg
 
         # Add the repository source to a new file, referencing the new keyring file
         echo "deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/kitware.list
         apt-get update
+        apt-get autoremove -y nodejs
         curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
-      shell: bash
+        
     - name: Build runtime
       run: |
         rm -rf ${PACKAGESDIR} && mkdir -p ${PACKAGESDIR}
